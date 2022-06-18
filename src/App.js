@@ -1,34 +1,10 @@
 import React, {Component} from 'react'
 import Table from './Components/Table'
+import WorkerForm from './Components/WorkerForm/form'
 
 class App extends Component{
     state = {
-        workers : [
-            {
-                name:"Emilio",
-                job:"Developer"
-            },
-            {
-                name:"Abner",
-                job:"Developer"
-            },
-            {
-                name:"Evertz",
-                job:"Developer"
-            },
-            {
-                name:"Fernando",
-                job:"Developer"
-            },
-            {
-                name:"Vicente",
-                job:"Developer"
-            },
-            {
-                name:"Marvin",
-                job:"Developer"
-            }
-        ]
+        workers : []
     }
     
 
@@ -38,14 +14,23 @@ class App extends Component{
             workers: workers.filter((worker,index)=>(index!=idx))
         })
     }
+
+    addWorker=(worker)=>{
+        this.setState({
+            workers:[...this.state.workers, worker]
+        })
+    }
     render(){
         const {workers} = this.state
         return(
             <div className='container'>
+                <WorkerForm addWorker={this.addWorker}/>
+                <br/>
                 <Table 
                     workersData={workers}
                     removeWorker={this.removeWorker}
                 />
+                
             </div>
         )
     }
