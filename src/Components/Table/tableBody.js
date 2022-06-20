@@ -3,8 +3,8 @@ import React from "react"
 const TableBody=({workersData, removeWorker})=>{
     return(
         <tbody>
-                    {
-                        workersData.map((item,idx)=>{
+                    { 
+                        workersData.map((item,idx)=>{ 
                             return(<tr key={idx}>
                                     <td>{item.name}</td>
                                     <td>{item.job}</td>

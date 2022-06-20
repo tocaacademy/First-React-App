@@ -4,7 +4,7 @@ import TableHeader from "./tableHeader";
 
 
 class Table extends Component{
-    render(){
+    render(){ 
         const {workersData,
                 removeWorker} = this.props
         return(
