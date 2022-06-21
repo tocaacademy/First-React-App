@@ -22,14 +22,13 @@ class WorkerForm extends Component {
   };
 
   onSubmit = () => {
-    this.props.addWorker(this.state);
+    this.props.saveWorker(this.state);
     this.setState(this.initState);
   };
 
   render() {
     const { name, job } = this.state;
 
-    console.log(this.props);
     return (
       <div>
         <form>

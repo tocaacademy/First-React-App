@@ -14,6 +14,7 @@ const TableBody = ({ workersData, removeWorker, setWorkerToEdit }) => {
                 onClick={() => {
                   removeWorker(idx);
                 }}
+                style={{background:"tomato", borderColor:"tomato", marginRight:10}}
               >
                 Delete
               </button>

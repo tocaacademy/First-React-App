@@ -16,15 +16,20 @@ class App extends Component {
     });
   };
 
-  addWorker = (worker) => {
+  saveWorker=(worker)=>{
     if (worker.id.length > 0) {
       this.editWorker(worker);
     } else {
-      worker.id = uuidv4();
-      this.setState({
-        workers: [...this.state.workers, worker]
-      });
+      this.addWorker(worker)
     }
+  }
+
+  addWorker = (worker) => {
+    worker.id = uuidv4();
+    this.setState({
+      workers: [...this.state.workers, worker]
+    });
+    
   };
   setWorkerToEdit = (id) => {
     const workerToEdit = this.state.workers.filter(
@@ -54,7 +59,7 @@ class App extends Component {
     return (
       <div className="container">
         <WorkerForm
-          addWorker={this.addWorker}
+          saveWorker={this.saveWorker}
           workerToEdit={this.state.workerToEdit}
         />
         <br />
