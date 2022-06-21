@@ -1,6 +1,6 @@
 import React from "react"
 
-const TableBody=({workersData, removeWorker})=>{
+const TableBody=({workersData, removeWorker, setWorkerToEdit})=>{
     return(
         <tbody>
                     {
@@ -10,6 +10,7 @@ const TableBody=({workersData, removeWorker})=>{
                                     <td>{item.job}</td>
                                     <td>
                                         <button type="button" onClick={()=>{removeWorker(idx)}}>Delete</button>
+                                        <button type="button" onClick={()=>{setWorkerToEdit(item.id)}}>Edit</button>
                                     </td>
                                 </tr>)
                         })
