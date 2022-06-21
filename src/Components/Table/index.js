@@ -4,11 +4,15 @@ import TableHeader from "./tableHeader";
 
 class Table extends Component {
   render() {
-    const { workersData, removeWorker } = this.props;
+    const { workersData, removeWorker, setWorkerToEdit } = this.props;
     return (
       <table>
         <TableHeader />
-        <TableBody workersData={workersData} removeWorker={removeWorker} />
+        <TableBody
+          workersData={workersData}
+          removeWorker={removeWorker}
+          setWorkerToEdit={setWorkerToEdit}
+        />
       </table>
     );
   }

@@ -1,6 +1,6 @@
 import React from "react";
 
-const TableBody = ({ workersData, removeWorker }) => {
+const TableBody = ({ workersData, removeWorker, setWorkerToEdit }) => {
   return (
     <tbody>
       {workersData.map((item, idx) => {
@@ -16,6 +16,14 @@ const TableBody = ({ workersData, removeWorker }) => {
                 }}
               >
                 Delete
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setWorkerToEdit(item.id);
+                }}
+              >
+                Edit
               </button>
             </td>
           </tr>

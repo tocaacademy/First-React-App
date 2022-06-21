@@ -2,10 +2,17 @@ import React, { Component } from "react";
 
 class WorkerForm extends Component {
   initState = {
+    id: "",
     name: "",
     job: ""
   };
   state = this.initState;
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.workerToEdit !== this.props.workerToEdit) {
+      this.setState(this.props.workerToEdit);
+    }
+  }
 
   onChangeNJ = (event) => {
     const { name, value } = event.target;
@@ -21,13 +28,15 @@ class WorkerForm extends Component {
 
   render() {
     const { name, job } = this.state;
+
+    console.log(this.props);
     return (
       <div>
         <form>
           <div>
-            <label htmlFor="name">Name</label>
+            <label>Name</label>
             <input
-              id="name"
+              autoFocus
               value={name}
               name="name"
               onChange={this.onChangeNJ}
@@ -36,7 +45,7 @@ class WorkerForm extends Component {
             />
           </div>
           <div>
-            <label htmlFor="job">Job</label>
+            <label>Job</label>
             <input
               value={job}
               name="job"

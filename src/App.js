@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import Table from "./Components/Table";
 import WorkerForm from "./Components/WorkerForm/form";
+import { v4 as uuidv4 } from "uuid";
 
 class App extends Component {
   state = {
-    workers: []
+    workers: [],
+    workerToEdit: {}
   };
 
   removeWorker = (idx) => {
@@ -15,17 +17,52 @@ class App extends Component {
   };
 
   addWorker = (worker) => {
+    if (worker.id.length > 0) {
+      this.editWorker(worker);
+    } else {
+      worker.id = uuidv4();
+      this.setState({
+        workers: [...this.state.workers, worker]
+      });
+    }
+  };
+  setWorkerToEdit = (id) => {
+    const workerToEdit = this.state.workers.filter(
+      (workerItem) => workerItem.id == id
+    );
+
     this.setState({
-      workers: [...this.state.workers, worker]
+      workerToEdit: workerToEdit != undefined ? workerToEdit[0] : {}
+    });
+  };
+
+  editWorker = (worker) => {
+    const workers = this.state.workers.map((workerItem) => {
+      if (worker.id == workerItem.id) {
+        workerItem = worker;
+      }
+
+      return workerItem;
+    });
+
+    this.setState({
+      workers
     });
   };
   render() {
     const { workers } = this.state;
     return (
       <div className="container">
-        <WorkerForm addWorker={this.addWorker} />
+        <WorkerForm
+          addWorker={this.addWorker}
+          workerToEdit={this.state.workerToEdit}
+        />
         <br />
-        <Table workersData={workers} removeWorker={this.removeWorker} />
+        <Table
+          workersData={workers}
+          removeWorker={this.removeWorker}
+          setWorkerToEdit={this.setWorkerToEdit}
+        />
       </div>
     );
   }
