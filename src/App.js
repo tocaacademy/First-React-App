@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Table from './Components/Table'
 import WorkerForm from './Components/WorkerForm/form'
+import updateForm from './Components/updateForm/form'
 
 class App extends Component{
     state = {
@@ -23,15 +24,16 @@ class App extends Component{
     render(){
         const {workers} = this.state
         return(
-            <div className='container'>
+            <div  className='container'>
                 <WorkerForm addWorker={this.addWorker}/>
                 <br/>
                 <Table 
                     workersData={workers}
                     removeWorker={this.removeWorker}
-                />
+                />               
                 
             </div>
+            
         )
     }
 }

@@ -6,6 +6,7 @@ const TableBody=({workersData, removeWorker})=>{
                     {
                         workersData.map((item,idx)=>{
                             return(<tr key={idx}>
+                                    <td>{item.id}</td>                            
                                     <td>{item.name}</td>
                                     <td>{item.job}</td>
                                     <td>
