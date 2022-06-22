@@ -5,8 +5,10 @@ class WorkerForm extends Component {
     id: "",
     name: "",
     job: ""
-  };gis
+  };
 
+  // arreglo para listar los trabajos(jobs)
+  jobs = ["Developer", "Front-End", "Back-End", "Full Stack"]
   state = this.initState;
 
   componentDidUpdate(prevProps, prevState) {
@@ -46,13 +48,23 @@ class WorkerForm extends Component {
           </div>
           <div>
             <label>Job</label>
-            <input
+            {/* <input
               value={job}
               name="job"
               onChange={this.onChangeNJ}
               type="text"
               placeholder="Write the job"
-            />
+            /> */}
+            <select name="job" onChange={this.onChangeNJ}>
+              <option value="">Choose a Job</option>
+              {
+                this.jobs.map((job,idx)=>{
+                  return(
+                    <option value={job}>{job}</option>
+                  )
+                })
+              } 
+            </select>            
           </div>
           <div>
             <input onClick={this.onSubmit} type="button" value="Save" />
