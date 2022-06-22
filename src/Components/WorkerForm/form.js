@@ -48,13 +48,6 @@ class WorkerForm extends Component {
           </div>
           <div>
             <label>Job</label>
-            {/* <input
-              value={job}
-              name="job"
-              onChange={this.onChangeNJ}
-              type="text"
-              placeholder="Write the job"
-            /> */}
             <select name="job" onChange={this.onChangeNJ}>
               <option value="">Choose a Job</option>
               {
