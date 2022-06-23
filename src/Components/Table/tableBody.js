@@ -7,7 +7,10 @@ const TableBody = ({ workersData, removeWorker, setWorkerToEdit }) => {
         return (
           <tr key={idx}>
             <td>{item.name}</td>
+            <td>{item.sex}</td>
             <td>{item.job}</td>
+            <td>{item.depto}</td>
+            <td>{item.country}</td>
             <td>
               <button
                 type="button"
