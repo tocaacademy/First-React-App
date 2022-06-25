@@ -4,11 +4,17 @@ class WorkerForm extends Component {
   initState = {
     id: "",
     name: "",
-    job: ""
+    sex:"",
+    job: "",
+    depto:"",
+    country:""
   };
 
   // arreglo para listar los trabajos(jobs)
   jobs = ["Developer", "Front-End", "Back-End", "Full Stack"]
+  deptos = ["Managua", "Leon", "Chinandega", "Estelí", "Alajuela"]
+  countrys = ["Nicaragua", "Costa Rica", "EEUU", "Italia"]
+
   state = this.initState;
 
   componentDidUpdate(prevProps, prevState) {
@@ -30,7 +36,7 @@ class WorkerForm extends Component {
   };
 
   render() {
-    const { name, job } = this.state;
+    const { name, job, sex} = this.state;
 
     return (
       <div>
@@ -47,6 +53,22 @@ class WorkerForm extends Component {
             />
           </div>
           <div>
+            <label>Sex</label>
+            <div>
+              <input 
+			  value="Male"
+			  name="sex"
+			  onChange={this.onChangeNJ}
+			  type="radio"/>Male
+              <br/>
+              <input 
+			  value="Female"
+			  name="sex"
+			  onChange={this.onChangeNJ}
+			  type="radio"/>Female
+            </div>
+          </div>
+          <div>
             <label>Job</label>
             <select name="job" onChange={this.onChangeNJ}>
               <option value="">Choose a Job</option>
@@ -58,6 +80,32 @@ class WorkerForm extends Component {
                 })
               } 
             </select>            
+          </div>
+          <div>
+            <label>Country</label>
+            <select name="country" onChange={this.onChangeNJ}>
+              <option value="">Choose a Country</option>
+              {
+                this.countrys.map((country,idx)=>{
+                  return(
+                    <option value={country}>{country}</option>
+                  )
+                })
+              }
+            </select>
+          </div>
+          <div>
+            <label>Department</label>
+            <select name="depto" onChange={this.onChangeNJ}>
+              <option value="">Choose a Department</option>
+              {
+                this.deptos.map((depto,idx)=>{
+                  return(
+                    <option value={depto}>{depto}</option>
+                  )
+                })
+              }
+            </select>
           </div>
           <div>
             <input onClick={this.onSubmit} type="button" value="Save" />
