@@ -4,7 +4,7 @@ class WorkerForm extends Component {
   initState = {
     id: "",
     name: "",
-    sexo:"",
+    sex:"",
     job: "",
     depto:"",
     country:""
